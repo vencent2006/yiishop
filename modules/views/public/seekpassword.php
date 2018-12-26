@@ -45,7 +45,7 @@
     ]); ?>
     <div class="span4 box">
         <div class="content-wrap">
-            <h6>慕课商城 - 后台管理</h6>
+            <h6>慕课商城 - 找回密码</h6>
             <?php echo $form->field($model, 'admin_user')->textInput(['class'=>'span12','placeholder'=>'管理员账号']); ?>
 <!--            <input class="span12" type="text" placeholder="管理员账号" />-->
             <?php echo $form->field($model, 'admin_pass')->passwordInput(['class'=>'span12','placeholder'=>'管理员密码']); ?>

@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\EntryForm;
+use app\models\Role;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -61,6 +64,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        phpinfo();
         return $this->render('index');
     }
 
@@ -124,5 +128,51 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Displays say hello.
+     *
+     * @return string
+     */
+    public function actionSay($message = 'Hello')
+    {
+//        renderPartial去掉原生的头
+        return $this->renderPartial('say', ['message'=>$message]);
+    }
+    /**
+     * try form for entry
+     *
+     */
+    public function actionEntry(){
+        $model = new EntryForm;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+
+            return $this->render('entry-confirm', ['model'=>$model]);
+        }else{
+
+            return $this->render('entry',['model'=>$model]);
+        }
+
+    }
+
+    /**
+     * try mysql db model
+     */
+    public function actionRole(){
+
+        $query = Role::find();
+        $pagination = new Pagination([
+            'defaultPageSize' => 1,
+            'totalCount' => $query->count(),
+        ]);
+        $roles = $query->orderBy('id')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('role', [
+                'roles' => $roles,
+                'pagination' => $pagination,
+            ]);
     }
 }
