@@ -22,12 +22,6 @@
     <!-- this page specific styles -->
     <link rel="stylesheet" href="assets/admin/css/compiled/index.css" type="text/css" media="screen" />
 
-<!--    <!-- open sans font -->-->
-<!--    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />-->
-<!---->
-<!--    <!-- lato font -->-->
-<!--    <link href='http://fonts.useso.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css' />-->
-
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -196,6 +190,17 @@
                 <li><a href="<?php echo yii\helpers\Url::to(['user/users']);?>">用户列表</a></li>
                 <li><a href="<?php echo yii\helpers\Url::to(['user/reg']);?>">加入新用户</a></li>
                 <li><a href="user-profile.html">用户信息</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
+                <span>分类管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="<?php echo yii\helpers\Url::to(['category/list']);?>">分类列表</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['category/add']);?>">新建分类</a></li>
             </ul>
         </li>
         <li>
