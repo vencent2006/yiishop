@@ -393,6 +393,14 @@
             }
         });
     });
+    $(".wysihtml5").wysihtml5({
+        "font-styles": false
+    });
+    $("#addpic").click(function(){
+        var pic = $("#-picsproduct").clone();
+        pic.attr("style", "margin-left:120px");
+        $("#product-pics").parent().append(pic);
+    });
 </script>
 
 </body>

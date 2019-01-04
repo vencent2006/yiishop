@@ -105,4 +105,14 @@ class Category extends ActiveRecord{
         $tree = $this->setPrefix($tree);
         return $tree;
     }
+
+    public static function getMenu(){
+        $top = self::find()->where('parentid = :pid', [":pid" => 0])->asArray()->all();
+        $data = [];
+        foreach((array)$top as $k=>$cate) {
+            $cate['children'] = self::find()->where("parentid = :pid", [":pid" => $cate['cateid']])->asArray()->all();
+            $data[$k] = $cate;
+        }
+        return $data;
+    }
 }
